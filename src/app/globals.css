@@ -30,4 +30,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  label {
+    font-size: 14px;
+    margin-bottom: 26px;
+  }
 }
