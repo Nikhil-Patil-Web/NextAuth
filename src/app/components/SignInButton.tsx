@@ -24,20 +24,20 @@ function SignInButton() {
       ) : (
         <>
           <Button
-            as={Link}
-            color="primary"
-            className="bg-blue-900 px-5 py-2 rounded-full mt-4 mb-4 text-sm "
-            href="/auth/signup"
-            variant="flat"
-          >
-            Sign Up
-          </Button>
-          <Button
-            className="bg-gray-500 px-5 py-2 rounded-full mt-4 mb-4 text-sm"
+            className="bg-blue-500 px-5 py-2 rounded-full mt-4 mb-4 text-sm"
             as={Link}
             href="/api/auth/signin"
           >
             Sign In
+          </Button>
+          <Button
+            as={Link}
+            color="primary"
+            className="bg-gray-500 px-5 py-2 rounded-full mt-4 mb-4 text-sm "
+            href="/auth/signup"
+            variant="flat"
+          >
+            Sign Up
           </Button>
         </>
       )}
