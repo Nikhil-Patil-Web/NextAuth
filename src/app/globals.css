@@ -34,4 +34,9 @@ body {
     font-size: 14px;
     margin-bottom: 26px;
   }
+  .text-tiny {
+    font-size: x-small;
+    font-weight: bold;
+    color: rgb(246, 133, 133);
+  }
 }
