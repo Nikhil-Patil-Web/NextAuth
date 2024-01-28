@@ -44,6 +44,7 @@ function SignInForm(props: Props) {
       toast.error(`Something went wrong!:${result?.error} `)
       return
     }
+    toast.success("Welcome!")
     router.push(props.callbackUrl ? props.callbackUrl : "/")
   }
   return (

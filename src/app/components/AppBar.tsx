@@ -1,6 +1,5 @@
 import {
   Button,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -8,6 +7,7 @@ import {
 } from "@nextui-org/react"
 import React from "react"
 import SignInButton from "./SignInButton"
+import Link from "next/link"
 
 function AppBar() {
   return (

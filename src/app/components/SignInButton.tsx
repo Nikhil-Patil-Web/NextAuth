@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "@nextui-org/react"
-import { useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import Link from "next/link"
 import React from "react"
 
@@ -25,8 +25,11 @@ function SignInButton() {
         <>
           <Button
             className="bg-blue-500 px-5 py-2 rounded-full mt-4 mb-4 text-sm"
-            as={Link}
-            href="/api/auth/signin"
+            // as={Link}
+            // href="/api/auth/signin"
+            onClick={() => {
+              signIn()
+            }}
           >
             Sign In
           </Button>
