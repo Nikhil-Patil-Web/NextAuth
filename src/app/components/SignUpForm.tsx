@@ -9,10 +9,14 @@ import {
 } from "@heroicons/react/20/solid"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, Checkbox, Input, Link } from "@nextui-org/react"
-import React, { useState } from "react"
+import { passwordStrength } from "check-password-strength"
+import React, { useEffect, useState } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import validator from "validator"
 import { z } from "zod"
+import PasswordStrength from "./PasswordStrength"
+import { registerUser } from "@/lib/actions/authActions"
+import { toast } from "react-toastify"
 
 const FormSchema = z
   .object({
@@ -55,16 +59,35 @@ function SignUpForm() {
     register,
     handleSubmit,
     reset,
+    watch,
     control,
     formState: { errors },
   } = useForm<InputType>({
     resolver: zodResolver(FormSchema),
   })
+  const [passStrength, setPassStrength] = useState(0)
   const [isVisiblePass, setIsVisiblePass] = useState(false)
   const toggleVisiblePass = () => setIsVisiblePass((prev) => !prev)
 
+  useEffect(() => {
+    setPassStrength(passwordStrength(watch().password).id)
+  }, [watch().password])
+
   const saveUser: SubmitHandler<InputType> = async (data) => {
-    console.log(data)
+    const { accepted, confirmPassword, ...user } = data
+    try {
+      const response = await registerUser({
+        firstname: user.firstName,
+        lastname: user.lastName,
+        password: user.password,
+        email: user.email,
+        phone: user.phone,
+      })
+      toast.success("The User is Registered Successfully!")
+    } catch (error) {
+      toast.error("Something went wrong")
+      console.log(error)
+    }
   }
 
   return (
@@ -119,6 +142,7 @@ function SignUpForm() {
           )
         }
       ></Input>
+      <PasswordStrength passStrength={passStrength}></PasswordStrength>
       <Input
         label="Confirm Password"
         errorMessage={errors.confirmPassword?.message}
