@@ -624,7 +624,7 @@ width: 100% !important;
 <td align="center" style="padding:10px;" width="130">
 <span style="color:#bfe0e5 !important;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;mso-line-height:exactly;line-height:26px;mso-text-raise:5px;letter-spacing: normal;">
 <font style="color:#bfe0e5;" class="button">
-<span><b>Activate</b></span>
+<a href="{{url}}" ><b>Activate</b></a>
 </font>
 </span>
 </td>
@@ -640,7 +640,7 @@ width: 100% !important;
 <a href="" target="_blank" style="color:#bfe0e5 !important;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;mso-line-height:exactly;line-height:26px;mso-text-raise:5px;letter-spacing: normal;text-decoration:none;text-align:center;">
 <span style="color:#bfe0e5 !important;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;mso-line-height:exactly;line-height:26px;mso-text-raise:5px;letter-spacing: normal;">
 <font style="color:#bfe0e5;" class="button">
-<span><b>Activate</b></span>
+<a href="{{url}}" ><b>Activate</b></a>
 </font>
 </span>
 </a>
@@ -1082,7 +1082,7 @@ width: 100% !important;
 <td align="center" style="padding:10px;" width="130">
 <span style="color:#bfe0e5 !important;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;mso-line-height:exactly;line-height:26px;mso-text-raise:5px;letter-spacing: normal;">
 <font style="color:#bfe0e5;" class="button">
-<span href="{{url}}"><b>Activate</b></span>
+<a href="{{url}}"><b>Activate</b></a>
 </font>
 </span>
 </td>
@@ -1098,7 +1098,7 @@ width: 100% !important;
 <a href="" target="_blank" style="color:#bfe0e5 !important;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;mso-line-height:exactly;line-height:26px;mso-text-raise:5px;letter-spacing: normal;text-decoration:none;text-align:center;">
 <span style="color:#bfe0e5 !important;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;mso-line-height:exactly;line-height:26px;mso-text-raise:5px;letter-spacing: normal;">
 <font style="color:#bfe0e5;" class="button">
-<span><b>Activate</b></span>
+<a href="{{url}}"><b>Activate</b></a>
 </font>
 </span>
 </a>

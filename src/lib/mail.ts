@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer"
 import { activationTemplate } from "./emailTemplates/activation"
+import Handlebars from "handlebars"
 export async function sendMail({
   to,
   subject,
