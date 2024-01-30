@@ -4,7 +4,7 @@ import { User } from "@prisma/client"
 import prisma from "../prisma"
 import * as bcrypt from "bcrypt"
 import { compileTemplate, sendMail } from "../mail"
-import { signJwt } from "../jwt"
+import { signJwt, verifyJwt } from "../jwt"
 import { verify } from "jsonwebtoken"
 import { activationTemplate } from "../emailTemplates/activation"
 import { forgotPasswordTemplate } from "../emailTemplates/forgotPassword"
@@ -74,7 +74,7 @@ export const activateUser: ActivateUserFunc = async (jwtUserId) => {
   return "success"
 }
 
-export async function forgotPassword(email: string) {
+export const forgotPassword = async (email: string) => {
   const user = await prisma.user.findUnique({
     where: {
       email: email,
@@ -97,4 +97,38 @@ export async function forgotPassword(email: string) {
     body: body,
   })
   return result
+}
+
+type ResetPasswordFunc = (
+  jwtUserId: string,
+  passw: string
+) => Promise<"userNotExist" | "success">
+
+export const resetPassword: ResetPasswordFunc = async (jwtUserId, passw) => {
+  const payload = verifyJwt(jwtUserId)
+  if (!payload) {
+    return "userNotExist"
+  }
+  const userId = payload.id!
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  })
+  if (!user) {
+    return "userNotExist"
+  }
+  const result = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      password: await bcrypt.hash(passw, 10),
+    },
+  })
+  if (result) {
+    return "success"
+  } else {
+    throw new Error("Something went wrong!")
+  }
 }

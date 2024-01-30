@@ -27,7 +27,7 @@ function ForgotPassPage() {
   const submitRequest: SubmitHandler<InputType> = async (data) => {
     try {
       const response = await forgotPassword(data.email)
-      if (response) {
+      if (response!) {
         toast.success(
           `Reset Password mail has been sent to you at ${data.email}`
         )
