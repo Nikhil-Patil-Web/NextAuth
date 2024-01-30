@@ -38,8 +38,12 @@ export async function sendMail({
   }
 }
 
-export function compileActivationTemplate(name: string, url: string) {
-  const template = Handlebars.compile(activationTemplate)
+export function compileTemplate(
+  name: string,
+  url: string,
+  templateOfMail: string
+) {
+  const template = Handlebars.compile(templateOfMail)
   const htmlBody = template({
     name,
     url,

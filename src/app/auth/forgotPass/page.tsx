@@ -1,9 +1,11 @@
 "use client"
+import { forgotPassword } from "@/lib/actions/authActions"
 import { EnvelopeIcon } from "@heroicons/react/20/solid"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, Image, Input } from "@nextui-org/react"
 import React from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { toast } from "react-toastify"
 import { z } from "zod"
 
 const FormSchema = z.object({
@@ -23,7 +25,18 @@ function ForgotPassPage() {
   })
 
   const submitRequest: SubmitHandler<InputType> = async (data) => {
-    console.log(data)
+    try {
+      const response = await forgotPassword(data.email)
+      if (response) {
+        toast.success(
+          `Reset Password mail has been sent to you at ${data.email}`
+        )
+        reset()
+      }
+    } catch (e) {
+      console.log(e)
+      toast.error(`Something went wrong: ${e}`)
+    }
   }
 
   return (
